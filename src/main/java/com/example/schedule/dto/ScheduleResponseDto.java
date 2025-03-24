@@ -9,4 +9,11 @@ public class ScheduleResponseDto {
     private String todo;
     private LocalDateTime creationdate;
     private LocalDateTime modificationdate;
+
+    public ScheduleResponseDto(Long id, String name, String password, String todo) {
+        this.id=id;
+        this.name=name;
+        this.password=password;
+        this.todo=todo;
+    }
 }

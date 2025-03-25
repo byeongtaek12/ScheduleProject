@@ -18,5 +18,7 @@ public class Schedule {
         this.name= name;
         this.password = password;
         this.todo = todo;
+        this.creationdate=LocalDateTime.now();
+        this.modificationdate=LocalDateTime.now();
     }
 }

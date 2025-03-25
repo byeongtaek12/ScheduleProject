@@ -43,9 +43,9 @@ public class ScheduleServiceImpl implements ScheduleService{
         if (name==null || todo==null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The name and todo is required values.");
         }
-        int updatedrow = scheduleRepository.updateSchedule(id, name, todo);
+        int updatedRow = scheduleRepository.updateSchedule(id, name, todo);
 
-        if (updatedrow==0) {
+        if (updatedRow==0) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Does not exist id="+id);
         }
 

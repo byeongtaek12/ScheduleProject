@@ -8,4 +8,5 @@ public interface ScheduleRepository {
     ScheduleResponseDto saveSchedule(Schedule schedule);
     List<ScheduleResponseDto> findAllSchedules();
     Schedule findScheduleByIdOrElseThrow(Long id);
+    int updateSchedule(Long id,String name,String todo);
 }

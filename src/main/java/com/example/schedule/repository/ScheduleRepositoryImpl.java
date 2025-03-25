@@ -58,7 +58,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
 
     @Override
     public int updateSchedule(Long id, String password, String name, String todo) {
-        return jdbcTemplate.update("update schedule set id=?, name=?, todo=?, modificationdate=?", id,name,todo, LocalDateTime.now());
+        return jdbcTemplate.update("update schedule set name=?, todo=?, modificationdate=? where id=?",name,todo, LocalDateTime.now(),id);
     }
 
 

@@ -7,4 +7,5 @@ import java.util.List;
 public interface ScheduleRepository {
     ScheduleResponseDto saveSchedule(Schedule schedule);
     List<ScheduleResponseDto> findAllSchedules();
+    Schedule findScheduleByIdOrElseThrow(Long id);
 }

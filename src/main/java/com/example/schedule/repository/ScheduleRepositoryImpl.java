@@ -55,6 +55,11 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
         return result.stream().findAny().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exists id = "+id));
     }
 
+    @Override
+    public int updateSchedule(Long id, String name, String todo) {
+        return jdbcTemplate.update("update schedule set id=?, name=?, todo=?", id,name,todo);
+    }
+
 
     private RowMapper<ScheduleResponseDto> scheduleRowMapper(){
         return new RowMapper<ScheduleResponseDto>() {

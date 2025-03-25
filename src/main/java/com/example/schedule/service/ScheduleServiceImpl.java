@@ -42,19 +42,38 @@ public class ScheduleServiceImpl implements ScheduleService{
     @Transactional
     @Override
     public ScheduleResponseDto updateSchedule(Long id, String password, String name, String todo) {
-        if (name==null || todo==null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The name and todo is required values.");
-        }
-        int updatedRow = scheduleRepository.updateSchedule(id, password,name, todo);
 
-        if (updatedRow==0) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Does not exist id="+id);
+        if (name==null || todo==null || password==null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The name and todo and password is required values.");
         }
 
-        Schedule schedule = scheduleRepository.findScheduleByIdOrElseThrow(id);
+        if (password.equals(scheduleRepository.findScheduleByIdOrElseThrow(id).getPassword())) {
+            int updatedRow = scheduleRepository.updateSchedule(id, password,name, todo);
 
-        return new ScheduleResponseDto(schedule);
+            if (updatedRow==0) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Does not exist id="+id);
+            }
+
+            Schedule schedule = scheduleRepository.findScheduleByIdOrElseThrow(id);
+
+            return new ScheduleResponseDto(schedule);
+        }
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "password is different");
     }
 
+    @Override
+    public void deleteSchedule(Long id,String password) {
+        if (password==null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The password is required values.");
+        }
 
+        if (password.equals(scheduleRepository.findScheduleByIdOrElseThrow(id).getPassword())) {
+            int deletedRow = scheduleRepository.deleteSchedule(id,password);
+
+            if(deletedRow==0) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Does not exist id="+id);
+            }throw new ResponseStatusException(HttpStatus.OK);
+        }
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "password is different");
+    }
 }

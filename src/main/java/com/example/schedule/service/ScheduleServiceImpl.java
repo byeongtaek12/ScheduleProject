@@ -4,7 +4,9 @@ import com.example.schedule.dto.ScheduleRequestDto;
 import com.example.schedule.dto.ScheduleResponseDto;
 import com.example.schedule.entity.Schedule;
 import com.example.schedule.repository.ScheduleRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,4 +37,22 @@ public class ScheduleServiceImpl implements ScheduleService{
 
         return new ScheduleResponseDto(scheduleRepository.findScheduleByIdOrElseThrow(id));
     }
+
+    @Override
+    public ScheduleResponseDto updateSchedule(Long id, String name, String todo) {
+        if (name==null || todo==null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The name and todo is required values.");
+        }
+        int updatedSchedule = scheduleRepository.updateSchedule(id, name, todo);
+
+        if (updatedSchedule==0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Does not exist id="+id);
+        }
+
+        Schedule schedule = scheduleRepository.findScheduleByIdOrElseThrow(id);
+
+        return new ScheduleResponseDto(schedule);
+    }
+
+
 }

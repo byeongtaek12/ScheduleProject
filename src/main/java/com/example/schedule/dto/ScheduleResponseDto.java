@@ -18,5 +18,7 @@ public class ScheduleResponseDto {
         this.id=schedule.getId();
         this.name=schedule.getName();
         this.todo=schedule.getTodo();
+        this.creationdate=schedule.getCreationdate();
+        this.modificationdate=schedule.getModificationdate();
     }
 }

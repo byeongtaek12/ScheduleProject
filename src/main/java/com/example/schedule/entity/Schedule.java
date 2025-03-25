@@ -1,7 +1,6 @@
 package com.example.schedule.entity;
 
 import lombok.Getter;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
 
@@ -14,11 +13,12 @@ public class Schedule {
     private LocalDateTime creationdate;
     private LocalDateTime modificationdate;
 
-    public Schedule(String name, String password, String todo) {
+    public Schedule(String name, String password, String todo,
+                    LocalDateTime creationdate,LocalDateTime modificationdate) {
         this.name= name;
         this.password = password;
         this.todo = todo;
-        this.creationdate=LocalDateTime.now();
-        this.modificationdate=LocalDateTime.now();
+        this.creationdate=creationdate;
+        this.modificationdate=modificationdate;
     }
 }

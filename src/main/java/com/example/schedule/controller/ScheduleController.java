@@ -48,5 +48,9 @@ public class ScheduleController {
     }
 
     // 선택 일정 삭제
-//    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto dto){
+        scheduleService.deleteSchedule(id,dto.getPassword());
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

@@ -42,7 +42,7 @@ public class ScheduleController {
     }
 
     // 선택 일정 수정
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ScheduleResponseDto> updateSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto dto ){
         return new ResponseEntity<>(scheduleService.updateSchedule(id,dto.getPassword(), dto.getName(),dto.getTodo()),HttpStatus.OK);
     }

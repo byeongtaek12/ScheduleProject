@@ -71,7 +71,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
         return new RowMapper<Schedule>() {
             @Override
             public Schedule mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Schedule(rs.getString("name"),rs.getString("password"),
+                return new Schedule(rs.getLong("id"),rs.getString("name"),rs.getString("password"),
                         rs.getString("todo"),rs.getTimestamp("creationdate").toLocalDateTime(),
                         rs.getTimestamp("modificationdate").toLocalDateTime());
             }

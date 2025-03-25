@@ -18,6 +18,6 @@ public class ScheduleServiceImpl implements ScheduleService{
     public ScheduleResponseDto saveSchedule(ScheduleRequestDto dto) {
         Schedule schedule = new Schedule(dto.getName(),dto.getPassword(),dto.getTodo());
 
-        return ScheduleRepository.saveSchedule(schedule);
+        return scheduleRepository.saveSchedule(schedule);
     }
 }

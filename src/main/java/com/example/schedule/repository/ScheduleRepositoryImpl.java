@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,8 +57,8 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
     }
 
     @Override
-    public int updateSchedule(Long id, String name, String todo) {
-        return jdbcTemplate.update("update schedule set id=?, name=?, todo=?", id,name,todo);
+    public int updateSchedule(Long id, String password, String name, String todo) {
+        return jdbcTemplate.update("update schedule set id=?, name=?, todo=?, modificationdate=?", id,name,todo, LocalDateTime.now());
     }
 
 

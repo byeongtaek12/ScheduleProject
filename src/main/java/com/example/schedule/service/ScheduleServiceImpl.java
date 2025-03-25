@@ -58,7 +58,7 @@ public class ScheduleServiceImpl implements ScheduleService{
 
             return new ScheduleResponseDto(schedule);
         }
-        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "password is different");
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "password is different");
     }
 
     @Override
@@ -74,6 +74,6 @@ public class ScheduleServiceImpl implements ScheduleService{
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Does not exist id="+id);
             }throw new ResponseStatusException(HttpStatus.OK);
         }
-        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "password is different");
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "password is different");
     }
 }

@@ -35,11 +35,11 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
         parameters.put("password", schedule.getPassword());
         parameters.put("todo", schedule.getTodo());
         parameters.put("creationdate", schedule.getCreationdate());
-        parameters.put("modificatondate", schedule.getModificationdate());
+        parameters.put("modificationdate", schedule.getModificationdate());
 
         Number key = simpleJdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
         return new ScheduleResponseDto(key.longValue(), schedule.getName(),schedule.getPassword(), schedule.getTodo(),
-                schedule.getCreationdate(),schedule.getCreationdate());
+                schedule.getCreationdate(),schedule.getModificationdate());
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.example.schedule.dto;
 
+import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
 public class ScheduleResponseDto {
     private Long id;
     private String name;
@@ -10,10 +12,4 @@ public class ScheduleResponseDto {
     private LocalDateTime creationdate;
     private LocalDateTime modificationdate;
 
-    public ScheduleResponseDto(Long id, String name, String password, String todo) {
-        this.id=id;
-        this.name=name;
-        this.password=password;
-        this.todo=todo;
-    }
 }

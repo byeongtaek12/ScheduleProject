@@ -9,5 +9,5 @@ public interface ScheduleService {
     ScheduleResponseDto saveSchedule(ScheduleRequestDto dto);
     List<ScheduleResponseDto> findAllSchedules();
     ScheduleResponseDto findScheduleById(Long id);
-    ScheduleResponseDto updateSchedule(Long id,String name, String todo);
+    ScheduleResponseDto updateSchedule(Long id,String password, String name, String todo);
 }

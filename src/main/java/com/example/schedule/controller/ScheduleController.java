@@ -21,20 +21,20 @@ public class ScheduleController {
     // 일정 등록
     @PostMapping
     public ResponseEntity<ScheduleResponseDto> createSchedule(@RequestBody ScheduleRequestDto dto) {
-        return new ResponseEntity<>(ScheduleService.saveSchedule(dto), HttpStatus.CREATED);
+        return new ResponseEntity<>(scheduleService.saveSchedule(dto), HttpStatus.CREATED);
     }
 
 
 
     // 전체 일정 조회
-    @GetMapping
+
 
     // 선택 일정 조회
-    @GetMapping("/{id}")
+//    @GetMapping("/{id}")
 
     // 선택 일정 수정
-    @PostMapping("/{id}")
+//    @PostMapping("/{id}")
 
     // 선택 일정 삭제
-    @DeleteMapping("/{id}")
+//    @DeleteMapping("/{id}")
 }

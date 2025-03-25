@@ -1,6 +1,7 @@
 package com.example.schedule.dto;
 
 import com.example.schedule.entity.Schedule;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ public class ScheduleResponseDto {
     private String name;
     private String todo;
     private LocalDateTime creationdate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime modificationdate;
 
     public ScheduleResponseDto(Schedule schedule) {

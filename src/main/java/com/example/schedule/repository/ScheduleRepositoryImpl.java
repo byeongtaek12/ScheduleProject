@@ -47,8 +47,19 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
 
     // repository) 일정 목록 조회 메서드
     @Override
-    public List<ScheduleResponseDto> findAllSchedules() {
-        return jdbcTemplate.query("select * from schedule order by modificationdate desc", scheduleRowMapper());
+    public List<ScheduleResponseDto> findAllSchedules(String name, String modificationdate) {
+        if (name==null && modificationdate==null) {
+            return jdbcTemplate.query("select * from schedule order by modificationdate desc", scheduleRowMapper());
+        }else if (name== null) {
+            return jdbcTemplate.query("select * from schedule where modificationdate like ? order by modificationdate desc",
+                    scheduleRowMapper(),modificationdate+"%");
+        }else if (modificationdate== null) {
+            return jdbcTemplate.query("select * from schedule where name=? order by modificationdate desc",
+                    scheduleRowMapper(),name);
+        }else{
+            return jdbcTemplate.query("select * from schedule where name=? and modificationdate like ?" +
+                    "order by modificationdate desc", scheduleRowMapper(),name,modificationdate+"%");
+        }
     }
 
     // repository) 일정 단건 조회 메서드

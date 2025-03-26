@@ -13,7 +13,6 @@ public class ScheduleResponseDto {
     private String name;
     private String todo;
     private LocalDateTime creationdate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime modificationdate;
 
     public ScheduleResponseDto(Schedule schedule) {

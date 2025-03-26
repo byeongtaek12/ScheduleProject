@@ -20,6 +20,7 @@ public class ScheduleServiceImpl implements ScheduleService{
         this.scheduleRepository = scheduleRepository;
     }
 
+    // service) 일정 저장 메서드
     @Override
     public ScheduleResponseDto saveSchedule(ScheduleRequestDto dto) {
         Schedule schedule = new Schedule(dto.getName(),dto.getPassword(),dto.getTodo(), LocalDateTime.now(),LocalDateTime.now());
@@ -27,18 +28,21 @@ public class ScheduleServiceImpl implements ScheduleService{
         return scheduleRepository.saveSchedule(schedule);
     }
 
+    // service) 일정 목록 조회 메서드
     @Override
     public List<ScheduleResponseDto> findAllSchedules() {
 
         return scheduleRepository.findAllSchedules();
     }
 
+    // service) 일정 단건 조회 메서드
     @Override
     public ScheduleResponseDto findScheduleById(Long id) {
 
         return new ScheduleResponseDto(scheduleRepository.findScheduleByIdOrElseThrow(id));
     }
 
+    // service) 일정 수정 메서드
     @Transactional
     @Override
     public ScheduleResponseDto updateSchedule(Long id, String password, String name, String todo) {
@@ -61,6 +65,7 @@ public class ScheduleServiceImpl implements ScheduleService{
         throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "password is different");
     }
 
+    // service) 일정 삭제 메서드
     @Override
     public void deleteSchedule(Long id,String password) {
         if (password==null) {

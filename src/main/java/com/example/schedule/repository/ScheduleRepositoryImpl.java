@@ -26,6 +26,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    // repository) 일정 저장 메서드
     @Override
     public ScheduleResponseDto saveSchedule(Schedule schedule) {
 
@@ -44,18 +45,20 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
                 schedule.getCreationdate(),schedule.getModificationdate());
     }
 
+    // repository) 일정 목록 조회 메서드
     @Override
     public List<ScheduleResponseDto> findAllSchedules() {
         return jdbcTemplate.query("select * from schedule order by modificationdate desc", scheduleRowMapper());
     }
 
+    // repository) 일정 단건 조회 메서드
     @Override
     public Schedule findScheduleByIdOrElseThrow(Long id) {
         List<Schedule> result = jdbcTemplate.query("select * from schedule where id = ?", scheduleRowMapperv2(), id);
         return result.stream().findAny().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exists id = "+id));
     }
 
-
+    // 각 행을 ScheduleResponseDto 타입으로 매핑 후 리스트로 반환해주는 메서드
     private RowMapper<ScheduleResponseDto> scheduleRowMapper(){
         return new RowMapper<ScheduleResponseDto>() {
             @Override
@@ -67,6 +70,8 @@ public class ScheduleRepositoryImpl implements ScheduleRepository{
             }
         };
     }
+
+    // 각 행을 Schedule 타입으로 매핑 후 리스트로 반환해주는 메서드
     private RowMapper<Schedule> scheduleRowMapperv2() {
         return new RowMapper<Schedule>() {
             @Override

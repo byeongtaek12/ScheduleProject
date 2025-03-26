@@ -17,6 +17,7 @@ public class ScheduleServiceImpl implements ScheduleService{
         this.scheduleRepository = scheduleRepository;
     }
 
+    // service) 일정 저장 메서드
     @Override
     public ScheduleResponseDto saveSchedule(ScheduleRequestDto dto) {
         Schedule schedule = new Schedule(dto.getName(),dto.getPassword(),dto.getTodo(), LocalDateTime.now(),LocalDateTime.now());
@@ -24,12 +25,14 @@ public class ScheduleServiceImpl implements ScheduleService{
         return scheduleRepository.saveSchedule(schedule);
     }
 
+    // service) 일정 목록 조회 메서드
     @Override
     public List<ScheduleResponseDto> findAllSchedules() {
 
         return scheduleRepository.findAllSchedules();
     }
 
+    // service) 일정 단건 조회 메서드
     @Override
     public ScheduleResponseDto findScheduleById(Long id) {
 

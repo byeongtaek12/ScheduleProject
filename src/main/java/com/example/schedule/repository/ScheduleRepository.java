@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ScheduleRepository {
     ScheduleResponseDto saveSchedule(Schedule schedule);
-    List<ScheduleResponseDto> findAllSchedules();
+    List<ScheduleResponseDto> findAllSchedules(String name, String modificationdate);
     Schedule findScheduleByIdOrElseThrow(Long id);
 }

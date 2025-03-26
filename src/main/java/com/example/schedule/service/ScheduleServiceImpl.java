@@ -27,9 +27,8 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     // service) 일정 목록 조회 메서드
     @Override
-    public List<ScheduleResponseDto> findAllSchedules() {
-
-        return scheduleRepository.findAllSchedules();
+    public List<ScheduleResponseDto> findAllSchedules(ScheduleRequestDto dto) {
+        return scheduleRepository.findAllSchedules(dto.getName(),dto.getModificationdate());
     }
 
     // service) 일정 단건 조회 메서드

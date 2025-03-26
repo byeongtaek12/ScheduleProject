@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ScheduleService {
     ScheduleResponseDto saveSchedule(ScheduleRequestDto dto);
-    List<ScheduleResponseDto> findAllSchedules();
+    List<ScheduleResponseDto> findAllSchedules(ScheduleRequestDto dto);
     ScheduleResponseDto findScheduleById(Long id);
 }

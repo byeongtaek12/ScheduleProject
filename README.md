@@ -43,12 +43,13 @@ level0은 main브랜치에 했습니다.
 ### API
 
 ![api.PNG](api.PNG)
+
 아래 표는 사진에 다 담지 못한 내용들만 따로 정리해서 표로 만든 것입니다.
 
-|등록 request | 등록 response  | 선택 조회 response   | 수정 request                                                                 |수정 response   | 삭제 request                             |                                                                                        
-|-----       |--------        |--------------      |----------------------------------------------------------------------------| ---             |----------------------------------------|
-| 요청body <br>{<br> ”name”:“작성자명”, <br>”password”: “비밀번호”, ”to do”: “할 일” <br>} | 응답 body <br> {<br> ”id”: “아이디값”,<br> ”name”:  “작성자명”, <br> ”to do”:  “할 일”, <br>”creationdate”: “작성일”, <br> ”modificationdate”:”수정일” <br>} | 응답 body<br>{<br>”id”: “아이디값”,<br>”name”:  “작성자명”,<br>”to do”:  “할 일”,<br>”creationdate”:  “작성일”<br>”modificationdate”: ”수정일”<br>} | 요청 param, <br>요청 body<br>{ <br>”password”: “비밀번호”,<br> ”name”: ”작성자명”,<br> ”todo”: “할 일”<br> } |응답 body<br>{<br>”id”: “아이디값”,<br>”name”:  “작성자명”,<br>”to do”:  “할 일”,<br>”creationdate”:  “작성일”<br>”modificationdate”: ”수정일”<br>}| 요청 param, <br>요청 body<br>{ <br>”password”: 비밀번호” <br>} |
-
+|등록 request | 등록 response  | 목록 조회 request | 선택 조회 response                                                                                                                    | 수정 request                                                                 |수정 response   | 삭제 request                             |                                                                                        
+|-----       |--------        |---------------|-----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------| ---             |----------------------------------------|
+| 요청body <br>{<br> ”name”:“작성자명”, <br>”password”: “비밀번호”, ”to do”: “할 일” <br>} | 응답 body <br> {<br> ”id”: “아이디값”,<br> ”name”:  “작성자명”, <br> ”to do”:  “할 일”, <br>”creationdate”: “작성일”, <br> ”modificationdate”:”수정일” <br>} | 요청 body { }   | 응답 body<br>{<br>”id”: “아이디값”,<br>”name”:  “작성자명”,<br>”to do”:  “할 일”,<br>”creationdate”:  “작성일”<br>”modificationdate”: ”수정일”<br>} | 요청 param, <br>요청 body<br>{ <br>”password”: “비밀번호”,<br> ”name”: ”작성자명”,<br> ”todo”: “할 일”<br> }  |응답 body<br>{<br>”id”: “아이디값”,<br>”name”:  “작성자명”,<br>”to do”:  “할 일”,<br>”creationdate”:  “작성일”<br>”modificationdate”: ”수정일”<br>}| 요청 param, <br>요청 body<br>{ <br>”password”: 비밀번호” <br>} |
+목록 조회 request 바디 안에 공백이거나 이름을 넣어서 조회하거나 수정일을 넣어서 조회하거나 둘다 넣어서 조회도 가능하게 수정 (당일에 수정하느라 표에 제대로 넣지 못했습니다..)
 ### SQL
 최상단 sql 파일을 봐주세요.
 
